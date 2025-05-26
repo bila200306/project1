@@ -177,18 +177,26 @@
       berbagai kebutuhan visual brand Anda.
    </p>
    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    
     <!-- Graphic Design -->
+
+     <?php
+        require_once 'config/db.php';
+        $query=$pdo->prepare("SELECT * FROM categories");
+        $query->execute();
+        $categories = $query->fetchAll();
+        foreach ($categories as $category) {
+     ?>
     <article>
-     <img alt="Woman in orange dress standing against brown wall, representing graphic design" class="rounded-lg w-full object-cover h-72" height="300" src="https://storage.googleapis.com/a1aa/image/2a3e13e4-1515-40b9-2cf6-e37cfeb375b8.jpg" width="400"/>
+     <img alt="<?php echo $category['name']; ?>" class="rounded-lg w-full object-cover h-72" height="300" src="<?php echo $category['image']; ?>" width="400"/>
      <h4 class="font-semibold mt-4 mb-2">
-      Graphic Design
+     <?php echo $category['name']; ?>
      </h4>
      <p class="text-xs text-gray-600 mb-2">
-      Kami menciptakan desain visual yang menarik dan fungsional untuk
-          memperkuat identitas brand Anda, mulai dari logo, kemasan, hingga
-          materi promosi digital dan cetak.
+           <?php echo $category['description']; ?>
+
      </p>
-     <a class="text-xs font-semibold flex items-center space-x-1 hover:underline" href="#">
+     <a class="text-xs font-semibold flex items-center space-x-1 hover:underline" href="category.php?id=<?php echo $category['id']; ?>">
       <span>
        Read More
       </span>
@@ -196,8 +204,11 @@
       </i>
      </a>
     </article>
+        <?php
+        }
+        ?>
     <!-- Videography -->
-    <article>
+    <!-- <article>
      <img alt="Woman in yellow sweater posing in graffiti alley, representing videography" class="rounded-lg w-full object-cover h-72" height="300" src="https://storage.googleapis.com/a1aa/image/bc0b4a33-311f-4e6d-5cf4-e28f23dd7524.jpg" width="400"/>
      <h4 class="font-semibold mt-4 mb-2">
       Videography
@@ -214,9 +225,9 @@
       <i class="fas fa-arrow-right">
       </i>
      </a>
-    </article>
+    </article> -->
     <!-- Photography -->
-    <article>
+    <!-- <article>
      <img alt="Man on escalator with blue background, representing photography" class="rounded-lg w-full object-cover h-72" height="300" src="https://storage.googleapis.com/a1aa/image/d2d0bcb1-2bfa-414b-ac49-8934d5a4b91c.jpg" width="400"/>
      <h4 class="font-semibold mt-4 mb-2">
       Photography
@@ -233,7 +244,7 @@
       <i class="fas fa-arrow-right">
       </i>
      </a>
-    </article>
+    </article> -->
    </div>
   </section>
   <!-- Graphic Design Portfolio -->

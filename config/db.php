@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
+$host = 'localhost:3308';
 $username = 'root';
 $password = '';
-$database = 'pentra';
+$database = 'project1';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);
