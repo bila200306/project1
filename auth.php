@@ -37,7 +37,7 @@ try {
         
         $_SESSION['success'] = 'Login successful!';
         
-        $redirectTo = $_SESSION['redirect_after_login'] ?? 'dashboard.php';
+        $redirectTo = $_SESSION['redirect_after_login'] ?? 'admin/dashboard.php';
         unset($_SESSION['redirect_after_login']);
         
         session_write_close();
