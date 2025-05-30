@@ -72,57 +72,54 @@ $_SESSION['last_activity'] = time();
 
           <!-- Page Heading -->
 
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <strong class="m-0 font-weight-bold text-primary">Category
-              </strong>
-            </div>
-            <div>
-            <a href="tmbh_category.php">Tambah Data</a>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive" >
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <!-- <th>No</th> -->
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Image</th>
-                      <th>Created_at</th>
-                      <th>Update_at</th>
-                      <th>Opsi</th>
+          <!-- Content Row -->
+          <div class="row">
 
-                      <?php
-                       require_once '../config/db.php';
-            $query = $pdo->prepare("SELECT * FROM categories");
-            $query->execute();
-            $categories = $query->fetchAll();
-            foreach ($categories as $category) {
-                        ?>
-                    </tr>
-                  </thead>
-                  
-                  <tbody>
-                    <tr>
-                      <td><?php echo $category['name'];?></td>
-                      <td><?php echo $category['description'];?></td>
-                      <td><?php echo $category['image'];?></td>
-                      <td><?php echo $category['created_at'];?></td>
-                      <td><?php echo $category['updated_at'];?></td>
-                      <td><a href="edit_category.php?id=<?php echo $category['id'];?>" class="btn btn-success btn-circle btn-sm"> <i class="fas fa-edit"></i></a>
-                      <a href="delete_mahasiswa.php?id=<?php echo $category['id'];?>" class="btn btn-danger btn-circle btn-sm"> <i class="fas fa-trash"></i></a></td>
-                      <?php
-                      }
-                      ?>
-                    </tr>
-                  </tbody>
-                </tabel>
-              </div>
-            </div>
-          </div>  
-            </div>
+            <!-- Content Column -->
+            <div class="col-lg-12 mb-4">
+             
+              <!-- Project Card Example -->
+               <form action="proses_category.php" method="POST">
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Input Data Mahasiswa &nbsp;
+                    <input type="submit" class="btn btn-success" value="Tampil Data"></h6>
+                  </div></form>
+
+                
+                <form action="proses_category.php" method="POST">
+                <div class="card-body">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+              <label> Name</label>
+                    <input type="text" name="name" class="form-control form-control-user" id="Name" placeholder="Masukkan NIM Anda">
+                  </div><br>
+
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+              <label>Description</label>
+              <input type="text" name="description" class="form-control form-control-user" id="Description" placeholder="Masukkan Nama Anda">
+                  </div><br>
+
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+              <label>Image</label>
+              <input type="image" name="image"class="form-control form-control-user" id="Image" placeholder="Masukkan Kota Lahir Anda">
+                  </div><br>
+
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+              <label>Created_at</label>
+              <input type="date" name="tanggal_lahir"class="form-control form-control-user" id="Tanggal Lahir" placeholder="Masukkan Tanggal Lahir Anda">
+                  </div><br>
+                
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+              <label>Program Study</label>
+              <select name="id_prodi" id="prodi" class="form-control form-control-user" id="exampleFirstName">
+                <option value="SI">Sistem Informasi</option>
+                <option value="TI">Teknik Informatika</option>
+                <option value="KF">Kajian Film Televisi</option>
+                <option value="BD">Bisnis Digital</option>
+                <option value="MR">Manajemen Ritel</option>
+              </select>
+                  </div><br>
+                  <input type="submit" class="btn btn-success" value="simpan">
 
               <div class="col-lg-6 mb-4">
  
