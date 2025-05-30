@@ -247,76 +247,40 @@
     </article> -->
    </div>
   </section>
-  <!-- Graphic Design Portfolio -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 flex flex-col md:flex-row md:space-x-8">
-   <div class="grid grid-cols-2 gap-4 md:w-1/3">
-    <img alt="Cartoon character wearing hood, part of graphic design portfolio" class="rounded" height="150" src="https://storage.googleapis.com/a1aa/image/4ea2299e-979b-4631-4ef6-164b8ff409e9.jpg" width="150"/>
-    <img alt="Happy Teacher Day illustration with group of people, part of graphic design portfolio" class="rounded" height="200" src="https://storage.googleapis.com/a1aa/image/c8bc3477-2fc2-4277-b442-5618561272ce.jpg" width="150"/>
-    <img alt="Smiling cartoon face with red background, part of graphic design portfolio" class="rounded" height="150" src="https://storage.googleapis.com/a1aa/image/40e73012-61cd-4085-9edd-2fc2ae38a3b4.jpg" width="150"/>
-   </div>
-   <div class="md:w-2/3 mt-8 md:mt-0">
-    <h3 class="text-xl font-normal mb-4">
-     Graphic Design
+  <!-- gallery -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+    <h3 class="text-center text-xl font-normal mb-1">
+        Galeri Karya Kami
     </h3>
-    <p class="text-xs text-gray-700 max-w-xl">
-     Kumpulan karya desain grafis kami mencerminkan bagaimana kami membantu
-        klien membangun identitas visual yang kuat mulai dari logo, materi
-        promosi, kemasan produk, hingga konten digital yang menarik.
-    </p>
-    <button class="mt-6 bg-black text-white text-xs font-semibold px-4 py-2 rounded hover:bg-gray-800">
-     Tampilkan Lebih
-     <i class="fas fa-arrow-right ml-2">
-     </i>
-    </button>
-   </div>
-  </section>
-  <!-- Videography Portfolio -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 flex flex-col md:flex-row md:space-x-8">
-   <div class="md:w-1/2">
-    <h3 class="text-xl font-normal mb-4">
-     Videography
-    </h3>
-    <p class="text-xs text-gray-700 max-w-xl mb-6">
-     Dalam portofolio videografi ini, Anda dapat melihat berbagai proyek
-        video yang telah kami produksi—mulai dari video promosi, company
-        profile, hingga konten storytelling—semuanya dikemas secara
-        profesional dan sesuai dengan tujuan brand klien.
-    </p>
-    <button class="bg-black text-white text-xs font-semibold px-4 py-2 rounded hover:bg-gray-800">
-     Tampilkan Lebih
-     <i class="fas fa-arrow-right ml-2">
-     </i>
-    </button>
-   </div>
-   <div class="md:w-1/2 mt-8 md:mt-0">
-    <img alt="Video portfolio grid with multiple thumbnails showing people, representing videography portfolio" class="rounded-lg w-full object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/453b9ffb-ac26-4997-ae99-84f97858d0a6.jpg" width="600"/>
-   </div>
-  </section>
-  <!-- Photography Portfolio -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 flex flex-col md:flex-row md:space-x-8">
-   <div class="grid grid-cols-2 gap-4 md:w-1/3">
-    <img alt="Woman wearing hijab outdoor portrait, part of photography portfolio" class="rounded" height="150" src="https://storage.googleapis.com/a1aa/image/e1626aa1-816e-47db-3542-bb8dba80781d.jpg" width="150"/>
-    <img alt="Jar of honey with pinecones, part of photography portfolio" class="rounded" height="150" src="https://storage.googleapis.com/a1aa/image/a69b7764-fe76-44e1-7af1-197d0868d64a.jpg" width="150"/>
-    <img alt="Man and woman talking indoors, part of photography portfolio" class="rounded" height="150" src="https://storage.googleapis.com/a1aa/image/79bbfed3-d09a-4c82-726a-049a5c14b6d4.jpg" width="150"/>
-    <img alt="Group of people posing outdoor, part of photography portfolio" class="rounded" height="150" src="https://storage.googleapis.com/a1aa/image/762007b4-fdd0-4ed9-9e2f-5cdde5b6e978.jpg" width="150"/>
-   </div>
-   <div class="md:w-2/3 mt-8 md:mt-0">
-    <h3 class="text-xl font-normal mb-4">
-     Photography
-    </h3>
-    <p class="text-xs text-gray-700 max-w-xl">
-     Portofolio fotografi kami menampilkan hasil dokumentasi visual yang
-        tidak hanya estetis, tetapi juga mampu menangkap esensi produk,
-        momen, dan suasana, mulai dari foto produk, lifestyle, hingga
-        dokumentasi acara.
-    </p>
-    <button class="mt-6 bg-black text-white text-xs font-semibold px-4 py-2 rounded hover:bg-gray-800">
-     Tampilkan Lebih
-     <i class="fas fa-arrow-right ml-2">
-     </i>
-    </button>
-   </div>
-  </section>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <?php
+require_once 'config/db.php';
+
+$query = $pdo->prepare("
+    SELECT si.image, c.name AS category_name
+    FROM service_images si
+    JOIN services s ON si.service_id = s.id
+    JOIN categories c ON s.category_id = c.id
+    ORDER BY c.name
+");
+$query->execute();
+$results = $query->fetchAll();
+
+$current_category = null;
+
+foreach ($results as $row) {
+    if ($current_category !== $row['category_name']) {
+        // Tampilkan nama kategori di awal grup baru
+        $current_category = $row['category_name'];
+        echo '<h2 class="text-2xl font-bold mb-4 mt-8">' . htmlspecialchars($current_category) . '</h2>';
+    }
+    // Tampilkan gambar
+    echo '<img alt="" class="rounded-lg w-full object-cover h-72 mb-4" src="' . htmlspecialchars($row['image']) . '"/>';
+}
+?>
+    </div>
+
+        </div>
   <!-- Tim Kami -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-20">
    <h3 class="text-xl font-normal mb-2">
