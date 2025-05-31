@@ -92,19 +92,16 @@ $_SESSION['last_activity'] = time();
                       <th>Image</th>
                       <th>Created_at</th>
                       <th>Update_at</th>
-                      <th>Opsi</th>
-
-                      <?php
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
                        require_once '../config/db.php';
             $query = $pdo->prepare("SELECT * FROM categories");
             $query->execute();
             $categories = $query->fetchAll();
             foreach ($categories as $category) {
                         ?>
-                    </tr>
-                  </thead>
-                  
-                  <tbody>
                     <tr>
                       <td><?php echo $category['name'];?></td>
                       <td><?php echo $category['description'];?></td>
@@ -112,7 +109,7 @@ $_SESSION['last_activity'] = time();
                       <td><?php echo $category['created_at'];?></td>
                       <td><?php echo $category['updated_at'];?></td>
                       <td><a href="edit_category.php?id=<?php echo $category['id'];?>" class="btn btn-success btn-circle btn-sm"> <i class="fas fa-edit"></i></a>
-                      <a href="delete_mahasiswa.php?id=<?php echo $category['id'];?>" class="btn btn-danger btn-circle btn-sm"> <i class="fas fa-trash"></i></a></td>
+                      <a href="./delete_category.php?id=<?php echo $category['id'];?>" class="btn btn-danger btn-circle btn-sm"> <i class="fas fa-trash"></i></a></td>
                       <?php
                       }
                       ?>

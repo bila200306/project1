@@ -82,7 +82,7 @@ $_SESSION['last_activity'] = time();
                <form action="proses_category.php" method="POST">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Input Data Mahasiswa &nbsp;
+                  <h6 class="m-0 font-weight-bold text-primary">Input Data Category &nbsp;
                     <input type="submit" class="btn btn-success" value="Tampil Data"></h6>
                   </div></form>
 
@@ -91,32 +91,32 @@ $_SESSION['last_activity'] = time();
                 <div class="card-body">
                 <div class="col-sm-6 mb-3 mb-sm-0">
               <label> Name</label>
-                    <input type="text" name="name" class="form-control form-control-user" id="Name" placeholder="Masukkan NIM Anda">
+                    <input type="text" name="name" class="form-control form-control-user" id="Name" placeholder="Masukkan Nama Anda">
                   </div><br>
 
                   <div class="col-sm-6 mb-3 mb-sm-0">
               <label>Description</label>
-              <input type="text" name="description" class="form-control form-control-user" id="Description" placeholder="Masukkan Nama Anda">
+              <input type="text" name="description" class="form-control form-control-user" id="Description" placeholder="Tambahkan Deskripsi Anda">
                   </div><br>
 
                   <div class="col-sm-6 mb-3 mb-sm-0">
               <label>Image</label>
-              <input type="image" name="image"class="form-control form-control-user" id="Image" placeholder="Masukkan Kota Lahir Anda">
+              <input type="text" name="image"class="form-control form-control-user" id="Image" placeholder="Pilih Gambar Anda">
                   </div><br>
 
                   <div class="col-sm-6 mb-3 mb-sm-0">
               <label>Created_at</label>
-              <input type="date" name="tanggal_lahir"class="form-control form-control-user" id="Tanggal Lahir" placeholder="Masukkan Tanggal Lahir Anda">
+              <input type="text" name="created_at"class="form-control form-control-user" id="Created at" placeholder="Masukkan Tanggal Lahir Anda">
                   </div><br>
                 
-                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  <!-- <div class="col-sm-6 mb-3 mb-sm-0">
               <label>Program Study</label>
               <select name="id_prodi" id="prodi" class="form-control form-control-user" id="exampleFirstName">
                 <option value="SI">Sistem Informasi</option>
                 <option value="TI">Teknik Informatika</option>
                 <option value="KF">Kajian Film Televisi</option>
                 <option value="BD">Bisnis Digital</option>
-                <option value="MR">Manajemen Ritel</option>
+                <option value="MR">Manajemen Ritel</option> -->
               </select>
                   </div><br>
                   <input type="submit" class="btn btn-success" value="simpan">

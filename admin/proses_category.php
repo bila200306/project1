@@ -1,20 +1,23 @@
 <?php
-{
-    global $mysql;
+require_once '../config/db.php'; // Pastikan ini meng-include file yang mengandung $pdo
 
-    $nama = $_POST['name'];
-    $deskripsi = $_POST['description'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'];
+    $description = $_POST['description'];
     $image = $_POST['image'];
     $created_at = $_POST['created_at'];
 
-    $sql = "INSERT INTO categories (name,description,image,created_at) VALUES (?,?,?,?)";
-    $stmt = $mysql->prepare($sql);
-    $stmt->bind_param("ss", $name, $description, $image, $created_at);
+    try {
+        $sql = "INSERT INTO categories (name, description, image, created_at) VALUES (?, ?, ?, ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$name, $description, $image, $created_at]);
 
-    if ($stmt->execute()) {
         echo "Data berhasil ditambahkan!";
-    } else {
-        echo "Error: " . $stmt->error;
+        // Bisa juga redirect pakai:
+        // header('Location: category.php');
+        // exit();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
 }
 ?>
