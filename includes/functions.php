@@ -1,5 +1,6 @@
 <?php
-function startSecureSession() {
+function startSecureSession()
+{
     if (session_status() === PHP_SESSION_NONE) {
         // Set session cookie parameters
         session_set_cookie_params([
@@ -13,7 +14,7 @@ function startSecureSession() {
 
         // Set session name
         session_name('PENTRA_SESSION');
-        
+
         // Start the session
         if (!session_start()) {
             error_log('Failed to start session');
@@ -24,17 +25,17 @@ function startSecureSession() {
         if (empty($_SESSION['last_activity'])) {
             $_SESSION['last_activity'] = time();
         }
-        
+
         if (empty($_SESSION['created'])) {
             $_SESSION['created'] = time();
         }
-        
+
         // Regenerate session ID periodically to prevent session fixation
         if (time() - $_SESSION['created'] > 1800) { // 30 minutes
             session_regenerate_id(true);
             $_SESSION['created'] = time();
         }
-        
+
         return true;
     }
     return true;
@@ -42,7 +43,8 @@ function startSecureSession() {
 
 startSecureSession();
 
-function isLoggedIn() {
+function isLoggedIn()
+{
     if (isset($_SESSION['user_id'], $_SESSION['last_activity'])) {
         if (time() - $_SESSION['last_activity'] > 3600) {
             session_unset();
@@ -55,7 +57,7 @@ function isLoggedIn() {
     return false;
 }
 
-function requireLogin($redirectTo = 'login.php')
+function requireLogin($redirectTo = '../login.php')
 {
     if (!isLoggedIn()) {
         $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
@@ -73,13 +75,14 @@ function requireGuest($redirectTo = 'dashboard.php')
     }
 }
 
-function destroySession() {
+function destroySession()
+{
     // Clear all session variables
     $_SESSION = [];
-    
+
     // Get session parameters
     $params = session_get_cookie_params();
-    
+
     // Delete the actual cookie
     setcookie(
         session_name(),
@@ -90,10 +93,10 @@ function destroySession() {
         $params["secure"],
         $params["httponly"]
     );
-    
+
     // Destroy session data in storage
     session_destroy();
-    
+
     // Clear session cookie in the browser
     if (isset($_COOKIE[session_name()])) {
         unset($_COOKIE[session_name()]);

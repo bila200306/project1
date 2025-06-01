@@ -10,15 +10,15 @@
             <i class="fas fa-home w-6"></i>
             <span class="ml-3">Dashboard</span>
         </a>
+        <a href="category.php"
+            class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-gray-100 rounded-lg mx-2 mt-2">
+            <i class="fas fa-user w-6"></i>
+            <span class="ml-3">Category</span>
+        </a>
         <a href="services.php"
             class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-gray-100 rounded-lg mx-2 mt-2">
             <i class="fas fa-boxes w-6"></i>
             <span class="ml-3">Services</span>
-        </a>
-        <a href="#"
-            class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-gray-100 rounded-lg mx-2 mt-2">
-            <i class="fas fa-user w-6"></i>
-            <span class="ml-3">Profile</span>
         </a>
         <a href="#"
             class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-gray-100 rounded-lg mx-2 mt-2">

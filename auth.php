@@ -8,7 +8,7 @@ require_once 'includes/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['error'] = 'Invalid request method';
-    header('Location: login.php');
+    header('Location: ../login.php');
     exit();
 }
 
@@ -17,7 +17,7 @@ $password = $_POST['password'] ?? '';
 
 if (empty($username) || empty($password)) {
     $_SESSION['error'] = 'Username and password are required';
-    header('Location: login.php');
+    header('Location: ../login.php');
     exit();
 }
 
@@ -48,13 +48,13 @@ try {
         usleep(rand(100000, 200000)); 
         
         $_SESSION['error'] = 'Invalid username or password';
-        header('Location: login.php');
+        header('Location: ../login.php');
         exit();
     }
 } catch (PDOException $e) {
     error_log('Login error: ' . $e->getMessage());
     
     $_SESSION['error'] = 'A system error occurred. Please try again later.';
-    header('Location: login.php');
+    header('Location: ../login.php');
     exit();
 }

@@ -10,7 +10,7 @@ require_once '../includes/functions.php';
 // Check if user is logged in
 if (!isLoggedIn()) {
     $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
-    header('Location: login.php');
+    header('Location: ../login.php');
     exit();
 }
 
@@ -19,6 +19,7 @@ $_SESSION['last_activity'] = time();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +27,7 @@ $_SESSION['last_activity'] = time();
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body class="bg-gray-100">
     <!-- Sidebar -->
     <div class="flex h-screen">
@@ -33,7 +35,7 @@ $_SESSION['last_activity'] = time();
         <?php include '../components/admin-sidebar.php'; ?>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col overflow-y-auto">
             <!-- Top Navigation -->
             <header class="bg-white shadow-sm z-10">
                 <div class="flex items-center justify-between p-4">
@@ -49,10 +51,12 @@ $_SESSION['last_activity'] = time();
                         </button>
                         <div class="relative">
                             <button class="flex items-center space-x-2 focus:outline-none">
-                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+                                <div
+                                    class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
                                     <?= strtoupper(substr($_SESSION['username'], 0, 1)) ?>
                                 </div>
-                                <span class="hidden md:inline text-gray-700"><?= htmlspecialchars($_SESSION['username']) ?></span>
+                                <span
+                                    class="hidden md:inline text-gray-700"><?= htmlspecialchars($_SESSION['username']) ?></span>
                                 <i class="fas fa-chevron-down text-xs text-gray-500"></i>
                             </button>
                         </div>
@@ -62,12 +66,17 @@ $_SESSION['last_activity'] = time();
 
             <!-- Main Content -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
+                <?php include '../components/alerts.php'; ?>
+
                 <div class="max-w-7xl mx-auto">
-                    <div class="bg-white rounded-lg shadow overflow-hidden">
+
+                    <div class="bg-white rounded-lg shadow overflow-y-auto">
                         <div class="p-6">
-                            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Welcome back, <?= htmlspecialchars(explode(' ', $_SESSION['username'])[0]) ?>! 👋</h2>
+                            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Welcome back,
+                                <?= htmlspecialchars(explode(' ', $_SESSION['username'])[0]) ?>! 👋
+                            </h2>
                             <p class="text-gray-600 mb-6">Here's what's happening with your dashboard today.</p>
-                            
+
                             <!-- Stats Cards -->
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                                 <div class="bg-blue-50 p-6 rounded-lg">
@@ -104,9 +113,9 @@ $_SESSION['last_activity'] = time();
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Recent Activity -->
-                            <div class="bg-white rounded-lg shadow overflow-hidden">
+                            <div class="bg-white rounded-lg shadow overflow-y-auto">
                                 <div class="px-6 py-4 border-b border-gray-200">
                                     <h3 class="text-lg font-medium text-gray-900">Recent Activity</h3>
                                 </div>
@@ -115,13 +124,15 @@ $_SESSION['last_activity'] = time();
                                     <div class="p-6 hover:bg-gray-50">
                                         <div class="flex items-start">
                                             <div class="flex-shrink-0">
-                                                <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                                <div
+                                                    class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
                                                     <i class="fas fa-user-plus"></i>
                                                 </div>
                                             </div>
                                             <div class="ml-4">
                                                 <p class="text-sm font-medium text-gray-900">New user registered</p>
-                                                <p class="text-sm text-gray-500">A new user has registered on the platform</p>
+                                                <p class="text-sm text-gray-500">A new user has registered on the
+                                                    platform</p>
                                                 <p class="mt-1 text-xs text-gray-400">5 minutes ago</p>
                                             </div>
                                         </div>
@@ -138,14 +149,15 @@ $_SESSION['last_activity'] = time();
 
     <script>
         // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuButton = document.querySelector('.mobile-menu-button');
             const sidebar = document.querySelector('.sidebar');
-            
-            mobileMenuButton.addEventListener('click', function() {
+
+            mobileMenuButton.addEventListener('click', function () {
                 sidebar.classList.toggle('-translate-x-full');
             });
         });
     </script>
 </body>
+
 </html>
