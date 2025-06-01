@@ -184,42 +184,42 @@
         <p class="text-center text-xs text-gray-500 max-w-3xl mx-auto mb-8">
             Karena kami berkomitmen untuk memberikan layanan yang solutif dan
             menyeluruh (end-to-end), kami menghadirkan ketiga layanan—Desain Grafis,
-           <?php
-require_once 'config/db.php';
-$query = $pdo->prepare("SELECT * FROM categories");
-$query->execute();
-$categories = $query->fetchAll();
-?>
-Videografi, dan Fotografi—sekaligus dalam satu atap untuk memenuhi
-berbagai kebutuhan visual brand Anda.
-</p>
+            <?php
+            require_once 'config/db.php';
+            $query = $pdo->prepare("SELECT * FROM categories");
+            $query->execute();
+            $categories = $query->fetchAll();
+            ?>
+            Videografi, dan Fotografi—sekaligus dalam satu atap untuk memenuhi
+            berbagai kebutuhan visual brand Anda.
+        </p>
 
-             <!-- Graphic Design -->
-              
+        <!-- Graphic Design -->
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <?php foreach ($categories as $category) { ?>
-        <article>
-            <img alt="<?php echo $category['name']; ?>" class="rounded-lg w-full object-cover h-72" height="300"
-                src="<?php echo $category['image']; ?>" width="400" />
-            <h4 class="font-semibold mt-4 mb-2">
-                <?php echo $category['name']; ?>
-            </h4>
-            <p class="text-xs text-gray-600 mb-2">
-                <?php echo $category['description']; ?>
-            </p>
-            <a class="text-xs font-semibold flex items-center space-x-1 hover:underline"
-                href="category.php?id=<?php echo $category['id']; ?>">
-                <span>
-                    Read More
-                </span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </article>
-    <?php } ?>
-</div>
+            <?php foreach ($categories as $category) { ?>
+                <article>
+                    <img alt="<?php echo $category['name']; ?>" class="rounded-lg w-full object-cover h-72" height="300"
+                        src="uploads/<?php echo $category['image']; ?>" width="400" />
+                    <h4 class="font-semibold mt-4 mb-2">
+                        <?php echo $category['name']; ?>
+                    </h4>
+                    <p class="text-xs text-gray-600 mb-2">
+                        <?php echo $category['description']; ?>
+                    </p>
+                    <a class="text-xs font-semibold flex items-center space-x-1 hover:underline"
+                        href="category.php?id=<?php echo $category['id']; ?>">
+                        <span>
+                            Read More
+                        </span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+            <?php } ?>
+        </div>
 
-            <!-- Videography -->
-            <!-- <article>
+        <!-- Videography -->
+        <!-- <article>
      <img alt="Woman in yellow sweater posing in graffiti alley, representing videography" class="rounded-lg w-full object-cover h-72" height="300" src="https://storage.googleapis.com/a1aa/image/bc0b4a33-311f-4e6d-5cf4-e28f23dd7524.jpg" width="400"/>
      <h4 class="font-semibold mt-4 mb-2">
       Videography
@@ -237,8 +237,8 @@ berbagai kebutuhan visual brand Anda.
       </i>
      </a>
     </article> -->
-            <!-- Photography -->
-            <!-- <article>
+        <!-- Photography -->
+        <!-- <article>
      <img alt="Man on escalator with blue background, representing photography" class="rounded-lg w-full object-cover h-72" height="300" src="https://storage.googleapis.com/a1aa/image/d2d0bcb1-2bfa-414b-ac49-8934d5a4b91c.jpg" width="400"/>
      <h4 class="font-semibold mt-4 mb-2">
       Photography

@@ -18,17 +18,18 @@
     <?php
 
     require_once 'config/db.php';
-    $query=$pdo->prepare("SELECT * FROM services");
-        $query->execute();
-        $services = $query->fetchAll();
-        foreach ($services as $services){
-    ?>
-    <div class="container mx-auto my-8">
-        <div class="bg-white shadow-md rounded-lg p-6">
-            <h2 class="text-2xl font-bold mb-4"><?php echo $services['name']; ?></h2>
-            <a href="service.php?id=<?php echo $services['id']; ?>" class="text-blue-500 hover:underline">View Details</a>
+    $query = $pdo->prepare("SELECT * FROM services WHERE category_id = :id");
+    $query->execute(['id' => $_GET['id']]);
+    $services = $query->fetchAll();
+    foreach ($services as $services) {
+        ?>
+        <div class="container mx-auto my-8">
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-4"><?php echo $services['name']; ?></h2>
+                <a href="service.php?id=<?php echo $services['id']; ?>" class="text-blue-500 hover:underline">View
+                    Details</a>
+            </div>
         </div>
-    </div>
     <?php } ?>
 
 
