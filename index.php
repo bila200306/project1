@@ -178,7 +178,7 @@
     </section>
     <!-- Layanan Kami -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-        <h3 class="text-center text-xl font-normal mb-1">
+        <h3 class="text-center text-3xl font-normal mb-1">
             Layanan Kami
         </h3>
         <p class="text-center text-xs text-gray-500 max-w-3xl mx-auto mb-8">
@@ -260,7 +260,7 @@
     </section>
     <!-- gallery -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-        <h3 class="text-center text-xl font-normal mb-1">
+        <h3 class="text-center text-3xl font-normal mb-1">
             Galeri Karya Kami
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -292,13 +292,15 @@
 
         </div>
         <!-- Tim Kami -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-20">
-            <h3 class="text-xl font-normal mb-2">
-                Tim Kami
-            </h3>
-            <p class="text-xs text-gray-600 max-w-md mb-8">
-                Secara efektif Kami memberikan layanan yang solutif bagi klien Kami.
-            </p>
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-20 flex justify-between items-center">
+            <div class="">
+                <h3 class="text-3xl font-normal mb-2">
+                    Tim Kami
+                </h3>
+                <p class="text-xs text-gray-600 max-w-md mb-8">
+                    Secara efektif Kami memberikan layanan yang solutif bagi klien Kami.
+                </p>
+            </div>
             <div class="flex space-x-12">
                 <div class="flex flex-col items-center text-center space-y-2">
                     <img alt="Portrait of a woman wearing headscarf, team member" class="rounded-full" height="80"
