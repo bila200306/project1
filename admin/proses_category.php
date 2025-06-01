@@ -4,7 +4,7 @@ require_once '../config/db.php'; // Pastikan ini meng-include file yang mengandu
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $description = $_POST['description'];
-    $image = $_POST['image'];
+    $image = $_POST['file']['name'] ?? null; // Ambil nama file jika ada
     $created_at = $_POST['created_at'];
 
     try {

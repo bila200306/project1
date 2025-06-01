@@ -79,52 +79,58 @@ $_SESSION['last_activity'] = time();
             <div class="col-lg-12 mb-4">
              
               <!-- Project Card Example -->
-               <form action="proses_category.php" method="POST">
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Input Data Category &nbsp;
-                    <input type="submit" class="btn btn-success" value="Tampil Data"></h6>
-                  </div></form>
+               <div class="card shadow mb-4">
+            <div class="card-header py-2 flex items-center justify-between my-6">
+  <strong class="text-xl font-bold text-blue-700 px-4">Input Data Category</strong>
+</div>
+    <div class="card-body">
+    </div>
+  </div>
+  
+<form action="proses_category.php" method="POST" enctype="multipart/form-data" class="p-6 bg-white rounded shadow-md max-w-xl mx-auto">
+  <div class="mb-4">
+    <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+    <input type="text" name="name" id="name" placeholder="Masukkan Nama Anda" required
+      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+  </div>
 
-                
-                <form action="proses_category.php" method="POST">
-                <div class="card-body">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-              <label> Name</label>
-                    <input type="text" name="name" class="form-control form-control-user" id="Name" placeholder="Masukkan Nama Anda">
-                  </div><br>
+  <div class="mb-4">
+    <label for="description" class="block text-gray-700 font-semibold mb-2">Description</label>
+    <input type="text" name="description" id="description" placeholder="Tambahkan Deskripsi Anda"
+      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+  </div>
 
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-              <label>Description</label>
-              <input type="text" name="description" class="form-control form-control-user" id="Description" placeholder="Tambahkan Deskripsi Anda">
-                  </div><br>
+  <div class="mb-4">
+    <label for="image" class="block text-gray-700 font-semibold mb-2">Image</label>
+    <input type="text" name="image" id="image" placeholder="Tambahkan Gambar Anda"
+      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue" />
+  </div>
 
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-              <label>Image</label>
-              <input type="text" name="image"class="form-control form-control-user" id="Image" placeholder="Pilih Gambar Anda">
-                  </div><br>
+  <div class="mb-6">
+    <label for="created_at" class="block text-gray-700 font-semibold mb-2">Created At</label>
+    <input type="date-time" name="created_at" id="created_at" 
+      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+  </div>
 
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-              <label>Created_at</label>
-              <input type="text" name="created_at"class="form-control form-control-user" id="Created at" placeholder="Masukkan Tanggal Lahir Anda">
-                  </div><br>
-                
-                  <!-- <div class="col-sm-6 mb-3 mb-sm-0">
-              <label>Program Study</label>
-              <select name="id_prodi" id="prodi" class="form-control form-control-user" id="exampleFirstName">
-                <option value="SI">Sistem Informasi</option>
-                <option value="TI">Teknik Informatika</option>
-                <option value="KF">Kajian Film Televisi</option>
-                <option value="BD">Bisnis Digital</option>
-                <option value="MR">Manajemen Ritel</option> -->
-              </select>
+  <div class="mb-6">
+    <label for="updated_at" class="block text-gray-700 font-semibold mb-2">Update At</label>
+    <input type="date-time" name="updated_at" id="updated_at"
+    class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+  </div>
+
+  <button type="submit"
+    class="bg-blue-600 text-white font-semibold py-2 px-6 rounded hover:bg-blue-700 transition duration-200">
+    Submit
+  </button>
+</form>
+              <!-- </select>
                   </div><br>
                   <input type="submit" class="btn btn-success" value="simpan">
 
               <div class="col-lg-6 mb-4">
  
         </div>
-      
+       -->
             <!-- Main Content -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
                 <div class="max-w-7xl mx-auto">

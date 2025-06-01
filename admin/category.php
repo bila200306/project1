@@ -26,6 +26,20 @@ $_SESSION['last_activity'] = time();
     <title>Dashboard - Your Site Name</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+  table.table-bordered, 
+  table.table-bordered th, 
+  table.table-bordered td {
+    border: 1px solid #dee2e6 !important;
+  }
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+  }
+</style>
+
 </head>
 
 <body class="bg-gray-100">
@@ -74,17 +88,17 @@ $_SESSION['last_activity'] = time();
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <strong class="m-0 font-weight-bold text-primary">Category
-              </strong>
-            </div>
-            <div>
-            <a href="tmbh_category.php">Tambah Data</a>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive" >
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
+            <div class="card-header py-2 flex items-center justify-between my-6">
+  <strong class="text-xl font-bold text-blue-700 px-4">Category</strong>
+  <a href="tmbh_category.php" 
+     class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 mr-4 rounded text-sm inline-block">
+    <i class="fas fa-plus mr-1"></i> Tambah Data
+  </a>
+</div>
+                <div class="card-body">
+                <div class="table-responsive px-4" >
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="bg-gray-500 text-white ">
                     <tr>
                       <!-- <th>No</th> -->
                       <th>Name</th>
@@ -92,6 +106,7 @@ $_SESSION['last_activity'] = time();
                       <th>Image</th>
                       <th>Created_at</th>
                       <th>Update_at</th>
+                        <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
