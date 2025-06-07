@@ -10,7 +10,7 @@ require_once '../includes/functions.php';
 // Check if user is logged in
 if (!isLoggedIn()) {
     $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
-    header('Location: login.php');
+    header('Location: ../login.php');
     exit();
 }
 
@@ -35,7 +35,7 @@ $_SESSION['last_activity'] = time();
         <?php include '../components/admin-sidebar.php'; ?>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col overflow-y-auto">
             <!-- Top Navigation -->
             <header class="bg-white shadow-sm z-10">
                 <div class="flex items-center justify-between p-4">
@@ -63,95 +63,142 @@ $_SESSION['last_activity'] = time();
                     </div>
                 </div>
             </header>
- <div id="content">
+            <div id="content">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-       <?php
-        ?>
-              <!-- Begin Page Content -->
-        <div class="container-fluid">
+                    <!-- Page Heading -->
 
-          <!-- Page Heading -->
+                    <?php include '../components/alerts.php'; ?>
 
-          <!-- Content Row -->
-          <div class="row">
 
-            <!-- Content Column -->
-            <div class="col-lg-12 mb-4">
-             
-              <!-- Project Card Example -->
-               <div class="card shadow mb-4">
-            <div class="card-header py-2 flex items-center justify-between my-6">
-  <strong class="text-xl font-bold text-blue-700 px-4">Input Data Category</strong>
-</div>
-    <div class="card-body">
-    </div>
-  </div>
-  
-<form action="proses_category.php" method="POST" enctype="multipart/form-data" class="p-6 bg-white rounded shadow-md max-w-xl mx-auto">
-  <div class="mb-4">
-    <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
-    <input type="text" name="name" id="name" placeholder="Masukkan Nama Anda" required
-      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
-  </div>
+                    <!-- Content Row -->
+                    <div class="row">
 
-  <div class="mb-4">
-    <label for="description" class="block text-gray-700 font-semibold mb-2">Description</label>
-    <input type="text" name="description" id="description" placeholder="Tambahkan Deskripsi Anda"
-      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
-  </div>
+                        <!-- Content Column -->
+                        <div class="col-lg-12 mb-4">
 
-  <div class="mb-4">
-    <label for="image" class="block text-gray-700 font-semibold mb-2">Image</label>
-    <input type="text" name="image" id="image" placeholder="Tambahkan Gambar Anda"
-      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue" />
-  </div>
+                            <!-- Project Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-2 flex items-center justify-between my-6">
+                                    <strong class="text-xl font-bold text-blue-700 px-4">Input Data Category</strong>
+                                </div>
+                                <div class="card-body">
+                                </div>
+                            </div>
 
-  <div class="mb-6">
-    <label for="created_at" class="block text-gray-700 font-semibold mb-2">Created At</label>
-    <input type="date-time" name="created_at" id="created_at" 
-      class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
-  </div>
+                            <form action="proses_category.php" method="POST" enctype="multipart/form-data"
+                                class="p-6 bg-white rounded shadow-md max-w-xl mx-auto">
+                                <div class="mb-4">
+                                    <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                                    <input type="text" name="name" id="name" placeholder="Masukkan Nama Anda" required
+                                        class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                </div>
 
-  <div class="mb-6">
-    <label for="updated_at" class="block text-gray-700 font-semibold mb-2">Update At</label>
-    <input type="date-time" name="updated_at" id="updated_at"
-    class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
-  </div>
+                                <div class="mb-4">
+                                    <label for="description"
+                                        class="block text-gray-700 font-semibold mb-2">Description</label>
+                                    <input type="text" name="description" id="description"
+                                        placeholder="Tambahkan Deskripsi Anda"
+                                        class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                </div>
 
-  <button type="submit"
-    class="bg-blue-600 text-white font-semibold py-2 px-6 rounded hover:bg-blue-700 transition duration-200">
-    Submit
-  </button>
-</form>
-              <!-- </select>
-                  </div><br>
-                  <input type="submit" class="btn btn-success" value="simpan">
+                                <div class="mb-4">
+                                    <label for="image" class="block text-gray-700 font-semibold mb-2">Image</label>
+                                    <div class="flex items-center">
+                                        <div class="relative flex-1">
+                                            <input type="file" name="image" id="image" accept="image/*"
+                                                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                                onchange="previewImage(this)" required />
+                                            <div class="w-full px-4 py-2 border rounded bg-white text-gray-500">
+                                                <span id="file-name">Pilih gambar</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="image-preview" class="mt-4 hidden">
+                                        <p class="text-sm text-gray-600 mb-2">Preview:</p>
+                                        <img id="preview" class="max-w-xs h-auto border rounded" />
+                                    </div>
+                                </div>
 
-              <div class="col-lg-6 mb-4">
+                                <button type="submit"
+                                    class="bg-blue-600 text-white font-semibold py-2 px-6 rounded hover:bg-blue-700 transition duration-200">
+                                    Submit
+                                </button>
+                            </form>
+                            <!-- </select>
+                                </div><br>
+                                <input type="submit" class="btn btn-success" value="simpan">
+
+                                <div class="col-lg-6 mb-4">
  
-        </div>
-       -->
-            <!-- Main Content -->
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
-                <div class="max-w-7xl mx-auto">
-                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                            </div>
+                            -->
+                            <!-- Main Content -->
+                            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
+                                <div class="max-w-7xl mx-auto">
+                                    <div class="bg-white rounded-lg shadow overflow-y-auto">
 
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
                     </div>
                 </div>
-            </main>
+            </div>
         </div>
     </div>
-
     <script>
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuButton = document.querySelector('.mobile-menu-button');
             const sidebar = document.querySelector('.sidebar');
 
-            mobileMenuButton.addEventListener('click', function () {
-                sidebar.classList.toggle('-translate-x-full');
-            });
+            if (mobileMenuButton && sidebar) {
+                mobileMenuButton.addEventListener('click', function () {
+                    sidebar.classList.toggle('-translate-x-full');
+                });
+            }
         });
+
+        // Image preview function
+        function previewImage(input) {
+            const preview = document.getElementById('preview');
+            const fileName = document.getElementById('file-name');
+            const imagePreview = document.getElementById('image-preview');
+
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+
+                // Check if file is an image
+                if (!file.type.match('image.*')) {
+                    alert('Please select an image file');
+                    input.value = '';
+                    return;
+                }
+
+                // Check file size (max 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('File size should be less than 2MB');
+                    input.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    fileName.textContent = file.name;
+                    imagePreview.classList.remove('hidden');
+                }
+
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                fileName.textContent = 'Pilih gambar';
+                imagePreview.classList.add('hidden');
+            }
+        }
     </script>
 </body>
 

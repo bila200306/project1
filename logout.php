@@ -30,5 +30,5 @@ if (isset($_COOKIE[session_name()])) {
 session_start();
 $_SESSION['success'] = 'You have been successfully logged out.';
 session_write_close();
-header('Location: login.php');
+header('Location: ../login.php');
 exit();

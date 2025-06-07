@@ -8,13 +8,13 @@ if (isset($_GET['id'])) {
         $stmt = $pdo->prepare("DELETE FROM categories WHERE id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        header("Location: categories.php?status=success");
+        header("Location: category.php?status=success");
     } catch (PDOException $e) {
         // Misalnya terjadi error foreign key
-        header("Location: categories.php?status=error&message=" . urlencode($e->getMessage()));
+        header("Location: category.php?status=error&message=" . urlencode($e->getMessage()));
     }
 } else {
-    header("Location: categories.php?status=error&message=Invalid ID");
+    header("Location: category.php?status=error&message=Invalid ID");
 }
 ?>
  
