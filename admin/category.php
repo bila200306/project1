@@ -114,7 +114,7 @@ $_SESSION['last_activity'] = time();
                         <td><?php echo $category['name']; ?></td>
                         <td><?php echo $category['description']; ?></td>
                         <td>
-                          <img src="/uploads/<?php echo $category['image']; ?>" alt="Image"
+                          <img src="../uploads/<?php echo $category['image']; ?>" alt="Image"
                             class="max-w-xs h-auto border rounded">
                         </td>
                         <td><?php echo $category['created_at']; ?></td>

@@ -267,12 +267,14 @@
             <?php
 
             $query = $pdo->prepare("
-    SELECT si.image, c.name AS category_name
-    FROM service_images si
-    JOIN services s ON si.service_id = s.id
-    JOIN categories c ON s.category_id = c.id
-    ORDER BY c.name
-");
+                SELECT si.image, c.name AS category_name
+                FROM service_images si
+                JOIN services s ON si.service_id = s.id
+                JOIN categories c ON s.category_id = c.id
+                ORDER BY c.name
+                LIMIT 4
+            ");
+
             $query->execute();
             $results = $query->fetchAll();
 
@@ -304,7 +306,7 @@
             <div class="flex space-x-12">
                 <div class="flex flex-col items-center text-center space-y-2">
                     <div class="rounded-full w-20 h-20 overflow-hidden">
-                        <img alt="Portrait of a woman wearing headscarf, team member" class="rounded-full" 
+                        <img alt="Portrait of a woman wearing headscarf, team member" class="rounded-full"
                             src="asset/nabila.jpg" />
                     </div>
                     <p class="text-xs font-semibold">
