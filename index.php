@@ -303,20 +303,22 @@
             </div>
             <div class="flex space-x-12">
                 <div class="flex flex-col items-center text-center space-y-2">
-                    <img alt="Portrait of a woman wearing headscarf, team member" class="rounded-full" height="80"
-                        src="https://storage.googleapis.com/a1aa/image/b21171ce-2bd8-4d8d-60de-26822db11e22.jpg"
-                        width="80" />
+                    <div class="rounded-full w-20 h-20 overflow-hidden">
+                        <img alt="Portrait of a woman wearing headscarf, team member" class="rounded-full" 
+                            src="asset/nabila.jpg" />
+                    </div>
                     <p class="text-xs font-semibold">
-                        Nadia Irwan
+                        Nabila Innas
                     </p>
                     <p class="text-xs text-gray-400">
                         Creative Strategic
                     </p>
                 </div>
                 <div class="flex flex-col items-center text-center space-y-2">
-                    <img alt="Portrait of a man with short hair, team member" class="rounded-full" height="80"
-                        src="https://storage.googleapis.com/a1aa/image/9aff6efa-eafe-4bbd-7234-0be9be05e9cc.jpg"
-                        width="80" />
+                    <div class="rounded-full w-20 h-20 overflow-hidden">
+                        <img alt="Portrait of a man with short hair, team member" class="rounded-full"
+                            src="asset/zacky.jpg" />
+                    </div>
                     <p class="text-xs font-semibold">
                         Zacky Zaifa
                     </p>
