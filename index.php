@@ -263,34 +263,35 @@
         <h3 class="text-center text-3xl font-normal mb-1">
             Galeri Karya Kami
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            <?php
+        <?php
+        $query = $pdo->prepare("
+            SELECT si.image, c.name AS category_name
+            FROM service_images si
+            JOIN services s ON si.service_id = s.id
+            JOIN categories c ON s.category_id = c.id
+            ORDER BY c.name
+        ");
 
-            $query = $pdo->prepare("
-                SELECT si.image, c.name AS category_name
-                FROM service_images si
-                JOIN services s ON si.service_id = s.id
-                JOIN categories c ON s.category_id = c.id
-                ORDER BY c.name
-                LIMIT 4
-            ");
+        $query->execute();
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
-            $query->execute();
-            $results = $query->fetchAll();
+        $grouped = [];
+        foreach ($results as $row) {
+            $category = $row['category_name'];
+            $grouped[$category][] = $row['image'];
+        }
+        ?>
 
-            $current_category = null;
-
-            foreach ($results as $row) {
-                if ($current_category !== $row['category_name']) {
-                    // Tampilkan nama kategori di awal grup baru
-                    $current_category = $row['category_name'];
-                    echo '<h2 class="text-2xl font-bold mb-4 mt-8">' . htmlspecialchars($current_category) . '</h2>';
-                }
-                // Tampilkan gambar
-                echo '<img alt="" class="rounded-lg w-full object-cover h-72 mb-4" src="' . htmlspecialchars($row['image']) . '"/>';
-            }
-            ?>
-        </div>
+        <?php foreach ($grouped as $category => $images): ?>
+            <h2 class="text-2xl font-bold mb-4 mt-8 text-center"><?= htmlspecialchars($category) ?></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <?php foreach ($images as $i => $image): ?>
+                    <?php if ($i < 4) { ?>
+                        <img alt="" class="rounded-lg w-full object-cover h-72 mb-4" src="<?= htmlspecialchars($image) ?>" />
+                    <?php } ?>
+                <?php endforeach; ?>
+            </div>
+        <?php endforeach; ?>
 
         </div>
         <!-- Tim Kami -->
