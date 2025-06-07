@@ -70,9 +70,15 @@ if (!$category) {
 
               <div class="mb-6">
                 <label for="created_at" class="block text-gray-700 font-semibold mb-2">Created At</label>
-                <input type="date" name="created_at" id="created_at" value="<?= htmlspecialchars($category['created_at']) ?>"
+                <input type="date-time" name="created_at" id="created_at" value="<?= htmlspecialchars($category['created_at']) ?>"
                   class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
               </div>
+
+                <div class="mb-6">
+                <label for="updated_at" class="block text-gray-700 font-semibold mb-2">Updated At</label>
+                <input type="date-time" name="updated_at" id="updated_at" value="<?= htmlspecialchars($category['updated_at']) ?>"
+                    class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
 
               <button type="submit"
                 class="bg-blue-600 text-white font-semibold py-2 px-6 rounded hover:bg-blue-700 transition duration-200">
