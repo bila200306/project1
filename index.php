@@ -104,7 +104,7 @@
         <!-- WhatsApp floating button right side -->
         <a aria-label="WhatsApp contact"
             class="fixed bottom-20 right-6 bg-green-600 hover:bg-green-700 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg"
-            href="#">
+            href="https://api.whatsapp.com/send?phone=62 82373648103&text=Halo%20PENTRA%20Studio!%20Saya%20ingin%20mendapatkan%20informasi%20lebih%20lanjut.">
             <i class="fab fa-whatsapp fa-lg">
             </i>
         </a>
